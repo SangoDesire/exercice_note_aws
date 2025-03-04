@@ -11,7 +11,21 @@ repositories {
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    // Use JUnit Jupiter for testing.
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
+    //Dépendance AWS SDK
+    implementation ("software.amazon.awssdk:iam:2.20.0") // Remplacez par la version la plus récente
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    // This dependency is used by the application.
+    implementation("com.google.guava:guava:32.1.1-jre")
+
+    //ajout de la nomenclature Maven (BOM) AWS SDK pour Java 2.x
+    implementation(platform("software.amazon.awssdk:bom:2.27.21"))
+    // With the bom declared, you specify individual SDK dependencies without a version.
+
+    //ajout d'une dépendance à Amazon Simple Storage Service
+    implementation("software.amazon.awssdk:s3")
 }
 
 test {
